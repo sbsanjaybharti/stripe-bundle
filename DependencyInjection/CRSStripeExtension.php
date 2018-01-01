@@ -21,6 +21,8 @@ class CRSStripeExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        $container->setParameter( 'crs_stripe.key', $config[ 'key' ] );
+        $container->setParameter( 'crs_stripe.status', $config[ 'status' ] );
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
