@@ -1,5 +1,8 @@
 <?php
 namespace CRS\StripeBundle\Model;
+
+use CRS\StripeBundle\lib\Customer;
+
 /**
  * Created by PhpStorm.
  * User: cyx-sanjay
@@ -19,5 +22,8 @@ class crs_stripe extends BaseStripeModel
         \Stripe\Stripe::setApiKey($this->key);
 
     }
+    public function Customer(){
+        return new Customer();
 
+    }
 }
