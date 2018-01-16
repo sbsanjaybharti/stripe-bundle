@@ -1,7 +1,8 @@
 <?php
 namespace CRS\StripeBundle\Model;
 
-use CRS\StripeBundle\lib\Customer;
+use CRS\StripeBundle\lib\core\Customer;
+
 
 /**
  * Created by PhpStorm.
@@ -15,7 +16,6 @@ class crs_stripe extends BaseStripeModel
     private $status = 'live';
     public function __construct()
     {
-
         global $kernel;
         $this->status = $kernel->getContainer()->getParameter('crs_stripe.status');
         $this->key = $kernel->getContainer()->getParameter('crs_stripe.key');

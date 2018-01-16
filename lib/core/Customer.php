@@ -9,4 +9,7 @@ namespace CRS\StripeBundle\lib\core;
 class Customer
 {
 
+    public function Create(){
+
+    }
 }
