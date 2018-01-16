@@ -24,6 +24,7 @@ class BaseStripeModel
      * cus_id			=> 'cus_9sa17ZpK3Q5WtG',
      * card_id			=> 'card_19YqFdFbry7lKsmPEgZ955q4'
     */
+    private $name;
     private $customer;
     private $amount;
     private $currency;
@@ -35,6 +36,28 @@ class BaseStripeModel
     private $cus_id;
     private $card_id;
 
+    /**
+     * Set customer
+     *
+     * @param string $customer
+     *
+     * @return string
+     */
+    public function setName($value)
+    {
+        $this->name = $value;
+
+        return $this;
+    }
+    /**
+     * Get string
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
     /**
      * Set customer
      *

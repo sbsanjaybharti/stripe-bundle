@@ -9,57 +9,61 @@
 namespace CRS\StripeBundle\lib\payment;
 
 
-class Cards
+use CRS\StripeBundle\Model\BaseStripeModel;
+
+class Cards extends BaseStripeModel
 {
-    private $cardNumber;
-    private $name;
-    private $exp_month;
-    private $exp_year;
-    private $cvc;
-    private $token;
+//    private $cardNumber = '444';
+//    private $name;
+//    private $exp_month;
+//    private $exp_year;
+//    private $cvc;
+//    private $token;
+//
+//    public function setName($value){
+//        $this->name = $value;
+//        return $this;
+//    }
+//    public function getName()
+//    {
+//        return $this->name;
+//    }
+//    public function setCardNumber($value){
+//        $this->cardNumber = $value;
+//        return $this;
+//    }
+//    public function getCardNumber()
+//    {
+//        echo $this->cardNumber;
+//        exit;
+//        return $this->cardNumber;
+//    }
+//    public function setExpMonth($value){
+//        $this->exp_month = $value;
+//        return $this;
+//    }
+//    public function getExpMonth()
+//    {
+//        return $this->exp_month;
+//    }
+//    public function setExpYear($value){
+//        $this->exp_year = $value;
+//        return $this;
+//    }
+//    public function getExpYear()
+//    {
+//        return $this->exp_year;
+//    }
+//    public function setCVC($value){
+//        $this->cvc = $value;
+//        return $this;
+//    }
+//    public function getCVC()
+//    {
+//        return $this->cvc;
+//    }
 
-    public function setName($value){
-        $this->name = $value;
-        return $this;
-    }
-    public function getName()
-    {
-        return $this->name;
-    }
-    public function setCardNumber($value){
-        $this->cardNumber = $value;
-        return $this;
-    }
-    public function getCardNumber()
-    {
-        return $this->cardNumber;
-    }
-    public function setExpMonth($value){
-        $this->exp_month = $value;
-        return $this;
-    }
-    public function getExpMonth()
-    {
-        return $this->exp_month;
-    }
-    public function setExpYear($value){
-        $this->exp_year = $value;
-        return $this;
-    }
-    public function getExpYear()
-    {
-        return $this->exp_year;
-    }
-    public function setCVC($value){
-        $this->cvc = $value;
-        return $this;
-    }
-    public function getCVC()
-    {
-        return $this->cvc;
-    }
-
-    public function setToken(){
+    public function Token(){
         try {
             return $token = \Stripe\Token::create(array(
                                 "card" => array(

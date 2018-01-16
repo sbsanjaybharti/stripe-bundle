@@ -2,6 +2,8 @@
 namespace CRS\StripeBundle\Model;
 
 use CRS\StripeBundle\lib\core\Customer;
+use CRS\StripeBundle\lib\payment\Cards;
+use Exception;
 
 
 /**
@@ -14,6 +16,7 @@ class crs_stripe extends BaseStripeModel
 {
     public $key;
     private $status = 'live';
+    private $card;
     public function __construct()
     {
         global $kernel;
@@ -24,6 +27,13 @@ class crs_stripe extends BaseStripeModel
     }
     public function Customer(){
         return new Customer();
+
+    }
+    public function Card(){
+        if($this->card)
+            return $this->card;
+        else
+            return $this->card = new Cards();
 
     }
 }
