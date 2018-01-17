@@ -18,7 +18,7 @@ class Cards extends BaseStripeModel
 //    private $exp_month;
 //    private $exp_year;
 //    private $cvc;
-//    private $token;
+    private $token;
 //
 //    public function setName($value){
 //        $this->name = $value;
@@ -62,6 +62,10 @@ class Cards extends BaseStripeModel
 //    {
 //        return $this->cvc;
 //    }
+    public function __construct($token)
+    {
+        $this->token = $token;
+    }
 
     public function Token(){
         try {

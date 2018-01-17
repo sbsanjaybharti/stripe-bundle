@@ -14,26 +14,42 @@ use Exception;
  */
 class crs_stripe extends BaseStripeModel
 {
-    public $key;
-    private $status = 'live';
+    public $publishable_key;
+    private $secret_key;
     private $card;
     public function __construct()
     {
         global $kernel;
-        $this->status = $kernel->getContainer()->getParameter('crs_stripe.status');
-        $this->key = $kernel->getContainer()->getParameter('crs_stripe.key');
-        \Stripe\Stripe::setApiKey($this->key);
+        $this->secret_key = $kernel->getContainer()->getParameter('crs_stripe.secret_key');
+        $this->publishable_key = $kernel->getContainer()->getParameter('crs_stripe.publishable_key');
+        \Stripe\Stripe::setApiKey($this->secret_key);
 
     }
+    public function token(){
+        try {
+            return $token = \Stripe\Token::create(array(
+                "card" => array(
+                    "name" => $this->getName(),
+                    "number" => $this->getCardNumber(),
+                    "exp_month" => $this->getExpMonth(),
+                    "exp_year" => $this->getExpYear(),
+                    "cvc" => $this->getCVC()
+                )
+            ));
+        }catch (Exception $e) {
+            // Something else happened, completely unrelated to Stripe
+            return $e->getMessage();
+        }
+    }
     public function Customer(){
-        return new Customer();
+        return new Customer($this->token());
 
     }
     public function Card(){
         if($this->card)
             return $this->card;
         else
-            return $this->card = new Cards();
+            return $this->card = new Cards($this->token());
 
     }
 }

@@ -19,8 +19,8 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('crs_stripe');
-        $rootNode->children()->scalarNode( 'key' )->end();
-        $rootNode->children()->scalarNode( 'status' )->end();
+        $rootNode->children()->scalarNode( 'publishable_key' )->end();
+        $rootNode->children()->scalarNode( 'secret_key' )->end();
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
