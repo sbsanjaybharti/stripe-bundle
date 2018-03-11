@@ -38,4 +38,23 @@ class Customer
             return $e->getMessage();
         }
     }
+    public function All($limit){
+        try {
+            $list = \Stripe\Customer::all(array("limit" => $limit));
+            echo "<pre>";
+            return $list;
+        }catch (Exception $e) {
+            // Something else happened, completely unrelated to Stripe
+            return $e->getMessage();
+        }
+    }
+
+    public function Delete($customer_id){
+        try {
+            return $this->get($customer_id)->delete();
+        }catch (Exception $e) {
+            // Something else happened, completely unrelated to Stripe
+            return $e->getMessage();
+        }
+    }
 }

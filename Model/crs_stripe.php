@@ -3,6 +3,7 @@ namespace CRS\StripeBundle\Model;
 
 use CRS\StripeBundle\lib\core\Customer;
 use CRS\StripeBundle\lib\payment\Cards;
+use CRS\StripeBundle\lib\core\Charges;
 use Exception;
 
 
@@ -17,11 +18,13 @@ class crs_stripe extends BaseStripeModel
     public $publishable_key;
     private $secret_key;
     private $card;
+    public $currency;
     public function __construct()
     {
         global $kernel;
         $this->secret_key = $kernel->getContainer()->getParameter('crs_stripe.secret_key');
         $this->publishable_key = $kernel->getContainer()->getParameter('crs_stripe.publishable_key');
+        $this->currency = $kernel->getContainer()->getParameter('crs_stripe.currency');
         \Stripe\Stripe::setApiKey($this->secret_key);
 
     }
@@ -43,6 +46,10 @@ class crs_stripe extends BaseStripeModel
     }
     public function Customer(){
         return new Customer($this->token());
+
+    }
+    public function Charge(){
+        return new Charges($this->token(), $this->currency);
 
     }
     public function Card(){
