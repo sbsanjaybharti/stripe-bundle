@@ -43,12 +43,12 @@ Add configuration to your config.yml file
 ```
 #Stripe API Access
 crs_stripe:
-    publishable_key: "pk_test_key"
-    secret_key: "sk_test_key"
-    currency: "USD"
+    publishable_key: "pk_test_key" #add your publishable key here
+    secret_key: "sk_test_key"   #add your secret key here
+    currency: "USD" #add your currency key here
 ```
 Note: amount should be in cent means $1 = 100 cent. So, use 100 insted of $1, 200 insted of $2 means amount = amount * 100
-#####How to use:
+##### How to use:
 Create an object
 ```
    $stripe = new crs_stripe();
