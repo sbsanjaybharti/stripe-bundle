@@ -5,7 +5,6 @@ The bundle is use to make payment and manage the client with strip payment gatwa
 
 * [Installation](#installation)
 * [Quick Start](#quick-start)
-* [Use Cases](#use-cases)
 
 <a name="installation"></a>
 ### Installation:
@@ -53,7 +52,7 @@ Create an object
 ```
    $stripe = new crs_stripe();
 ```
-1. For making the payment: It will create an account in Stripe of this user also it will process the payment
+1. For making the payment directly :
 ````
  $stripe->setCardNumber(<Your card Number>);
         $stripe->setName('<Card holder name>);
@@ -91,6 +90,3 @@ Create an object
 ````
  $new_customer = $stripe->Customer()->Delete('cus_key');
 ````
-
-<a name="use-cases"></a>
-### Use Cases
